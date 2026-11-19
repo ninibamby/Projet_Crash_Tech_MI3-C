@@ -32,7 +32,9 @@ nouveau->suivant = NULL;
 return nouveau;
 }
 
-liste *trierage(liste *l, int age){
+void ajouter_age(int age, liste *l){
+chainon *nouveau = creerchainon(age);
+
 
 
 
