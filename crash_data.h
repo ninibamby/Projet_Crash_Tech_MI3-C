@@ -11,8 +11,16 @@ typedef struct victime{
 typedef struct voiture{
     int id;
     int purpose; 
-    victime 1;
+    victime victime;
+}voiture;
 
 
 typedef struct noeud{
+        voiture voiture;
+        struct noeud droite;
+        struct noeud gauche;
+}
+
+
+
 
