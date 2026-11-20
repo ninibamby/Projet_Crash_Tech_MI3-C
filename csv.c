@@ -1,13 +1,13 @@
-FILE *openf(char* nom){
-  FILE* f=fopen(nom,'r');
+int *openf(char* nom, FILE* f){
+  f=fopen(nom,'r');
   if(f==NULL){
   printf("erreur ouverture fichier");
-  retrun NULL;
+  return 0;
   }
-  return f;
-}
+  return 1;
+}    //return si le fichier est ouvert ou non 
 
-FILE
+
 
 
 
