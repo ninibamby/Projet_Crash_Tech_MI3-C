@@ -24,7 +24,8 @@ stat_age *premier;
 stat_age *creerchainon(int a){                                      // fonction permettant de creer un chainon contenant un age 
 stat_age *nouveau = malloc(sizeof(stat_age));                     
 if(nouveau == NULL){
-exit (0);
+printf("erreur");
+  exit(1);
 }
 nouveau->age = a;
 nouveau->homme = 0;                                                 //initialisation des champs a 0
@@ -40,20 +41,35 @@ return nouveau;
 
 
 
-void ajouter_age(int age, liste *l){                                //procédure permettant d'ajouter un age à la liste triée dans l'ordre croissant
-stat_age *nouveau = creerchainon(age);
-
+void ajouter_age(int age, liste *l){                                //procédure permettant d'ajouter un age à la liste triée dans l'ordre croissan
 if (l == NULL){
-exit(1);
+exit(2);
 }
 
 if (nouveau == NULL){
-exit(2);
+exit(3);
 }
 stat_age *courant = l -> premier;
 stat_age *precedent = l -> premier;
-if(l-premier == NULL){
-l-premier = nouveau;
+int existe_deja = 0;
+  while(courant != NULL){
+    
+if(courant->age = age){
+      existe_deja = 1;
+}
+    courant = courant->suivant;
+  }
+  
+  if (existe_deja = 1){
+
+
+    
+  }
+  
+else{
+ stat_age *nouveau = creerchainon(age);
+   if(l->premier == NULL){
+l->premier = nouveau;
 }
 
 else if( nouveau->age == courant->age){
@@ -62,7 +78,7 @@ else if( nouveau->age == courant->age){
 
 else if( nouveau->age < courant->age){
 nouveau->suivant = courant;
-liste->premier = nouveau;
+l->premier = nouveau;
 }
 
 else if(nouveau->age > courant->age){
@@ -75,10 +91,6 @@ courant = courant->suivant;
 nouveau->suivant = courant;
 precedent->suivant = nouveau;
 
-  else if( nouveau->age == courant->age){
-  ajouter les données dans chaque champ
-
-  }
 
   }while(nouveau->age > courant->age);
 
@@ -92,7 +104,7 @@ precedent->suivant = nouveau;
 
 int rechercher_age(int age, liste *l){                            // fonction permettant de retourner l'emplacement d'un age dans la liste
 if (l == NULL){
-exit(3);
+exit(4);
 }
 int n = 0;
 stat_age *courant = l->premier;
