@@ -19,7 +19,7 @@ typedef struct noeud{
         voiture voiture;
         struct noeud droite;
         struct noeud gauche;
-}
+}noeud;
 
 
 
