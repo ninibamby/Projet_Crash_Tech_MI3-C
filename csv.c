@@ -20,7 +20,7 @@ CsvData* recup_data(FILE*f){
   
   CvsData*data;
 
-  fscanf(f," %d;%19[^;];%19[^;];%d;%d;%d;%d;%d;%d ",
+ if( fscanf(f," %d;%19[^;];%19[^;];%d;%d;%d;%d;%d;%d ",
         &data->year,
         data->collision_id,
         data->vehicle_id,
@@ -29,7 +29,9 @@ CsvData* recup_data(FILE*f){
         &data->severity,
         &data->gender,
         &data->age,
-        &data->purpose)
+        &data->purpose) == 9){
+    return data;
+
   
   
   
