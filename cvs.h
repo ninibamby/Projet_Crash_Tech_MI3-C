@@ -9,6 +9,6 @@ typedef struct {
     int user_type;
     int severity;
     int gender;
-    int birth_year;
+    int age;
     int purpose;
 } CsvData;
