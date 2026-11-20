@@ -50,11 +50,14 @@ exit(2);
 }
 stat_age *courant = l -> premier;
 stat_age *precedent = l -> premier;
-if( nouveau->age < courant->age){
+if(l-premier == NULL){
+l-premier = nouveau;
+}
+else if( nouveau->age < courant->age){
 nouveau->suivant = courant;
 liste->premier = nouveau;
 }
-else if(nouveau->age > courant->age);
+else if(nouveau->age > courant->age){
 do{
 precedent = courant;
 courant = courant->suivant;
@@ -64,7 +67,7 @@ precedent->suivant = nouveau;
 }
 }while(nouveau->age > courant->age);
 } 
-
+}
 
 
 
