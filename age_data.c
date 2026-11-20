@@ -68,13 +68,21 @@ precedent->suivant = nouveau;
 
 
 
-int rechercher_age(int age, liste l){
+int rechercher_age(int age, liste l){                            // fonction permettant de retourner l'emplacement d'un age dans la liste
 if (l == NULL){
 exit(3);
 }
 int n = 0;
 stat_age *courant = liste->premier;
 do{
+if(courant->age == age){
+return n;
+}
+courant = courant->suivant;
+n++;
+}(while courant->age != age);
+reutrn -1;
+}
 
 
   
