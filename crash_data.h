@@ -16,6 +16,7 @@ typedef struct voiture{
 
 
 typedef struct noeud{
+        char cle;
         voiture voiture;
         struct noeud droite;
         struct noeud gauche;
