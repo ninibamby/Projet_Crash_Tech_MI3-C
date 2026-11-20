@@ -42,9 +42,11 @@ return nouveau;
 
 void ajouter_age(int age, liste *l){                                //procédure permettant d'ajouter un age à la liste triée dans l'ordre croissant
 stat_age *nouveau = creerchainon(age);
+
 if (l == NULL){
 exit(1);
 }
+
 if (nouveau == NULL){
 exit(2);
 }
@@ -53,21 +55,37 @@ stat_age *precedent = l -> premier;
 if(l-premier == NULL){
 l-premier = nouveau;
 }
+
+else if( nouveau->age == courant->age){
+  ajouter les données dans chaque champ
+}
+
 else if( nouveau->age < courant->age){
 nouveau->suivant = courant;
 liste->premier = nouveau;
 }
+
 else if(nouveau->age > courant->age){
-do{
+
+  do{
 precedent = courant;
 courant = courant->suivant;
-if( nouveau->age < courant->age){
+
+  if( nouveau->age < courant->age){
 nouveau->suivant = courant;
 precedent->suivant = nouveau;
-else if(
+
+  else if( nouveau->age == courant->age){
+  ajouter les données dans chaque champ
+
+  }
+
+  }while(nouveau->age > courant->age);
+
+  } 
+
 }
-}while(nouveau->age > courant->age);
-} 
+
 }
 
 
