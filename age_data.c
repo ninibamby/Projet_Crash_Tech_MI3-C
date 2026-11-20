@@ -8,7 +8,7 @@ int femme;
 int genre_inconnu;
 int conducteurs;
 int passagers;
-int piétons;
+int pietons;
 struct stat_age *suivant;
 }stat_age; 
 
@@ -32,7 +32,7 @@ nouveau->femme = 0;
 nouveau->genre_inconnu = 0;
 nouveau->conducteurs = 0;
 nouveau->passagers = 0;
-nouveau->piétons = 0;
+nouveau->pietons = 0;
 nouveau->suivant = NULL;  
 return nouveau;
 }
