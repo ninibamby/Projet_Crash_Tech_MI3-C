@@ -26,7 +26,7 @@ CsvData* recup_data(FILE*f){
               &data->user_type,
               &data->severity,
               &data->gender,
-              &data->age,
+              &data->birth_year,
               &data->purpose) == 9){
       
           return data;
