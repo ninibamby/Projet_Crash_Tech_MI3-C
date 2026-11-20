@@ -64,6 +64,7 @@ courant = courant->suivant;
 if( nouveau->age < courant->age){
 nouveau->suivant = courant;
 precedent->suivant = nouveau;
+else if(
 }
 }while(nouveau->age > courant->age);
 } 
