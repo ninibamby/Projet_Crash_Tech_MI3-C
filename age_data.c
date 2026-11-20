@@ -1,4 +1,4 @@
-__#include<stdio.h>
+#include<stdio.h>
 #include<stdlib.h>
 
 typedef struct stat_age{                                           //déclaration de la structure stat_age     
