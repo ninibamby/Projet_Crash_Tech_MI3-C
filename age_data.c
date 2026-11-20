@@ -48,8 +48,8 @@ exit(1);
 if (nouveau == NULL){
 exit(2);
 }
-stat_age *courant = liste -> premier;
-stat_age *precedent = liste -> premier;
+stat_age *courant = l -> premier;
+stat_age *precedent = l -> premier;
 if( nouveau->age < courant->age){
 nouveau->suivant = courant;
 liste->premier = nouveau;
