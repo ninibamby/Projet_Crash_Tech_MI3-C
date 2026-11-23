@@ -12,6 +12,10 @@ int openf(char* nom, FILE** f){
 
 
 CsvData* recup_data(FILE*f){
+
+ 
+ int naissance;
+ int age;
   
   CsvData*data;
   char ligne[256];
@@ -26,8 +30,10 @@ CsvData* recup_data(FILE*f){
               &data->user_type,
               &data->severity,
               &data->gender,
-              &data->birth_year,
+              &naissance,
               &data->purpose) == 9){
+    age=data->year - naissance;
+      data->birth_year=age;
       
           return data;
        }
