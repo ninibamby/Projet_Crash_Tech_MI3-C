@@ -24,3 +24,6 @@ stat_age *dernier;
 void ajouter_sats();
 stat_age *creerchainon();
 liste initialiserliste();
+int rechercher_age();
+void ajouter_age();
+
