@@ -11,34 +11,37 @@ int openf(char* nom, FILE** f){
 }    //return si le fichier est ouvert ou non 
 
 
-CsvData* recup_data(FILE*f){
+CsvData *recup_data(FILE *f) {
 
- 
- int naissance;
- int age;
-  
-  CsvData*data;
-  char ligne[256];
+    char ligne[256];
+    int naissance;
 
- while (fgets(ligne, sizeof(ligne), f) != NULL) {
+    while (fgets(ligne, sizeof(ligne), f) != NULL) {
 
-     if( sscanf(ligne," %d;%19[^;];%19[^;];%d;%d;%d;%d;%d;%d ",
-              &data->year,
-              data->collision_id,
-              data->vehicle_id,
-              &data->location,
-              &data->user_type,
-              &data->severity,
-              &data->gender,
-              &naissance,
-              &data->purpose) == 9){
-    age=data->year - naissance;
-      data->birth_year=age;
-      
-          return data;
-       }
-      // ligne incorecte
-       }
+        CsvData *data = malloc(sizeof(CsvData));
+
+        if (data == NULL)
+            exit(EXIT_FAILURE);
+
+        if (sscanf(ligne, " %d;%19[^;];%19[^;];%d;%d;%d;%d;%d;%d",
+                   &data->year,
+                   data->collision_id,
+                   data->vehicle_id,
+                   &data->location,
+                   &data->user_type,
+                   &data->severity,
+                   &data->gender,
+                   &naissance,
+                   &data->purpose) == 9) {
+
+            data->birth_year = data->year - naissance;
+
+            return data;
+        }
+
+        free(data);
+    }
+
     return NULL;
 }
  
