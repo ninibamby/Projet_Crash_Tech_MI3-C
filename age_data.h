@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -22,3 +23,4 @@ stat_age *dernier;
 
 void ajouter_sats();
 stat_age *creerchainon();
+liste initialiserliste();
