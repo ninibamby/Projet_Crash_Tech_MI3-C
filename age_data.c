@@ -70,14 +70,6 @@ switch(type_usager){
 
 
 
-
-
-
-
-
-
-
-
 void ajouter_age(int age, liste *l){                                //procédure permettant d'ajouter un age a la liste triée dans l'ordre croissant
     if (l == NULL) {
         return;
@@ -135,7 +127,7 @@ n++;
 reutrn -1;
 }
 
-
+void afficher_sats_age(
   
   
 
