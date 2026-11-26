@@ -1,25 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-
-typedef struct stat_age{                                           //déclaration de la structure stat_age     
-int age;
-int homme;
-int femme;
-int genre_inconnu;
-int conducteurs;
-int passagers;
-int pietons;
-struct stat_age *suivant;
-}stat_age; 
-
-
-
-typedef struct liste{                                               //déclaration de la liste contenant les statistiques de chaque age
-stat_age *premier;
-}liste;
-
-
-
+#include<cvs.h>
 
 stat_age *creerchainon(int a){                                      // fonction permettant de creer un chainon contenant un age 
 stat_age *nouveau = malloc(sizeof(stat_age));                     
@@ -38,66 +19,94 @@ nouveau->suivant = NULL;
 return nouveau;
 }
 
-
-
-
-void ajouter_age(int age, liste *l){                                //procédure permettant d'ajouter un age à la liste triée dans l'ordre croissan
-if (l == NULL){
-exit(2);
+liste initialiserliste(liste l){                                   // fonction permettant d'initialiser une liste
+l->premier = NULL;
+l->dernier = NULL;
+  return l;
 }
 
-if (nouveau == NULL){
-exit(3);
+void ajouter_sats(chainon *a, int genre, int type_usager){         //procédure permettant d'incrémenter des statistiques à un chainon contenant un age
+if(a==NULL){
+return;
 }
-stat_age *courant = l -> premier;
-stat_age *precedent = l -> premier;
-int existe_deja = 0;
-  while(courant != NULL){
-    
-if(courant->age = age){
-      existe_deja = 1;
-}
-    courant = courant->suivant;
-  }
+switch(genre){
+
+  case 1 :
+    a->homme++;
+  break;
+
+  case 2 :
+    a->femme++;
+  break;
   
-  if (existe_deja = 1){
+  case 3 :
+    a->genre_inconnu++;
+  break;
 
+  default : 
+    printf("erreur");
+  break;
+}
 
-    
-  }
+switch(type_usager){
+
+  case 1 :
+    a->conducteurs++;
+  break;
+
+  case 2 :
+    a->passagers++;
+  break;
   
-else{
- stat_age *nouveau = creerchainon(age);
-   if(l->premier == NULL){
-l->premier = nouveau;
+  case 3 :
+    a->pietons++;
+  break;
+
+  default : 
+    printf("erreur");
+  break;
+}
 }
 
-else if( nouveau->age == courant->age){
-  ajouter les données dans chaque champ
-}
-
-else if( nouveau->age < courant->age){
-nouveau->suivant = courant;
-l->premier = nouveau;
-}
-
-else if(nouveau->age > courant->age){
-
-  do{
-precedent = courant;
-courant = courant->suivant;
-
-  if( nouveau->age < courant->age){
-nouveau->suivant = courant;
-precedent->suivant = nouveau;
 
 
-  }while(nouveau->age > courant->age);
+void ajouter_age(int age, liste *l){                                //procédure permettant d'ajouter un age a la liste triée dans l'ordre croissant
+    if (l == NULL) {
+        return;
+    }
 
-  } 
+    stat_age *courant = l->premier;
+    stat_age *precedent = NULL;
 
-}
+    while (courant != NULL && courant->age < age) {
+        precedent = courant;
+        courant = courant->suivant;
+    }
+    
+  
+  if (courant != NULL && courant->age == age) {
+        return;
+    }
 
+  
+    stat_age *nouveau = creerchainon(age);
+
+  
+  if (precedent == NULL) {
+        nouveau->suivant = l->premier;
+        l->premier = nouveau;
+    }
+
+
+  else {
+        nouveau->suivant = courant;
+        precedent->suivant = nouveau;
+    }
+
+   
+  if (nouveau->suivant == NULL) {
+        l->dernier = nouveau;
+    }
 }
 
 
@@ -118,7 +127,7 @@ n++;
 reutrn -1;
 }
 
-
+void afficher_sats_age(
   
   
 
