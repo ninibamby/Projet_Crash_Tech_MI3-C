@@ -2,27 +2,6 @@
 #include<stdlib.h>
 #include<cvs.h>
 
-typedef struct stat_age{                                           //déclaration de la structure stat_age     
-int age;
-int homme;
-int femme;
-int genre_inconnu;
-int conducteurs;
-int passagers;
-int pietons;
-struct stat_age *suivant;
-}stat_age; 
-
-
-
-typedef struct liste{                                               //déclaration de la liste contenant les statistiques de chaque age
-stat_age *premier;
-stat_age *dernier;
-}liste;
-
-
-
-
 stat_age *creerchainon(int a){                                      // fonction permettant de creer un chainon contenant un age 
 stat_age *nouveau = malloc(sizeof(stat_age));                     
 if(nouveau == NULL){
