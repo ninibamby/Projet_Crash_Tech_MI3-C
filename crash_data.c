@@ -1,4 +1,9 @@
+#include "crash_data.h"
 
+victime* creevictime(){
+    
+    
+} 
 
 
 
