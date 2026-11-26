@@ -79,7 +79,7 @@ int eq_p=pivot->equilibre;
     return pivot;
 }
 
-noeud *rotationDroite(noeud *a) {
+noeud *rotationGauche(noeud *a) {
     if (a == NULL || a->droite == NULL)
         return a;
 
@@ -160,10 +160,31 @@ void libererAVL(noeud *a) {
     free(a);
 }
 
+noeud *rechercheOuCree(noeud *a, voiture v) {
+    noeud *n = rechercheAVL(a, v.id);
 
-verif si le noeud exite 
-si oui return le noeud 
-sinon null et on le cree 
+    if (n != NULL)
+        return n;
+
+    return creenoeud(v);
+}
+
+
+void *crash_data(FILE *f) {
+
+    CsvData *data;
+
+    while ((data = recup_data(f)) != NULL) {
+
+        /* On traite data ici */
+
+        free(data);
+    }
+
+    close_csv(f);
+
+    return NULL;
+}
 
 
 
