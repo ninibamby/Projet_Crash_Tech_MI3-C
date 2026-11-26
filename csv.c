@@ -22,7 +22,7 @@ CsvData* recup_data(FILE*f){
 
  while (fgets(ligne, sizeof(ligne), f) != NULL) {
 
-     if( sscanf(f," %d;%19[^;];%19[^;];%d;%d;%d;%d;%d;%d ",
+     if( sscanf(ligne," %d;%19[^;];%19[^;];%d;%d;%d;%d;%d;%d ",
               &data->year,
               data->collision_id,
               data->vehicle_id,
