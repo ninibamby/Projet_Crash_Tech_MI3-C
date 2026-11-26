@@ -104,7 +104,7 @@ precedent->suivant = nouveau;
 
 int rechercher_age(int age, liste *l){                            // fonction permettant de retourner l'emplacement d'un age dans la liste
 if (l == NULL){
-exit(4);
+return -1;
 }
 int n = 0;
 stat_age *courant = l->premier;
@@ -114,7 +114,7 @@ return n;
 }
 courant = courant->suivant;
 n++;
-}(while courant->age != age && courant !=NULL);
+}(while courant->age != age && courant->suivant !=NULL);
 reutrn -1;
 }
 
