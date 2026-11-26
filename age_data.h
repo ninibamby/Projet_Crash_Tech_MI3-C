@@ -19,3 +19,5 @@ stat_age *premier;
 stat_age *dernier;
 }liste;
 
+
+void ajouter_sats();
