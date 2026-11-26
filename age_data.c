@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<cvs.h>
 
 typedef struct stat_age{                                           //déclaration de la structure stat_age     
 int age;
