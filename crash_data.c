@@ -1,4 +1,6 @@
 #include "crash_data.h"
+#include "cvs.h"
+
 
 victime *creevictime() {
     victime *a = malloc(sizeof(victime));
