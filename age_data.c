@@ -224,7 +224,71 @@ void afficher_pyramide_age(liste *l) {                                 //procéd
 
     printf("\n=======================================\n");
 }
-  
+
+void afficher_pyramide_age_par_genre(liste *l) {
+
+    if (l == NULL || l->premier == NULL) {
+        printf("La liste est vide.\n");
+        return;
+    }
+
+    stat_age *courant = l->premier;
+
+    int total_genre = 0;
+    int total_type = 0;
+
+    // Calcul des totaux
+    while (courant != NULL) {
+
+        total_genre += courant->homme
+                     + courant->femme
+                     + courant->genre_inconnu;
+
+        total_type += courant->conducteurs
+                    + courant->passagers
+                    + courant->pietons;
+
+        courant = courant->suivant;
+    }
+
+    courant = l->premier;
+
+    // PYRAMIDE PAR GENRE
+    printf("\n========== PYRAMIDE DES AGES PAR GENRE ==========\n");
+
+    if (total_genre > 0) {
+
+        while (courant != NULL) {
+
+            printf("\nAge : %d ans\n", courant->age);
+
+            printf("Hommes : %.2f%% ",
+                courant->homme * 100.0 / total_genre);
+
+            int i;
+            for (i = 0; i < courant->homme * 100 / total_genre; i++) {
+                printf("*");
+            }
+
+            printf("\nFemmes : %.2f%% ",
+                courant->femme * 100.0 / total_genre);
+
+            for (i = 0; i < courant->femme * 100 / total_genre; i++) {
+                printf("*");
+            }
+
+            printf("\nGenre inconnu : %.2f%% ",
+                courant->genre_inconnu * 100.0 / total_genre);
+
+            for (i = 0; i < courant->genre_inconnu * 100 / total_genre; i++) {
+                printf("*");
+            }
+
+            printf("\n");
+
+            courant = courant->suivant;
+        }
+    }
 
 
 
