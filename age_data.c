@@ -20,7 +20,10 @@ return nouveau;
 }
 
 liste initialiserliste(liste l){                                   // fonction permettant d'initialiser une liste
-l->premier = NULL;
+if(l==NULL){
+  return NULL;
+}
+  l->premier = NULL;
 l->dernier = NULL;
   return l;
 }
@@ -117,13 +120,13 @@ return -1;
 }
 int n = 0;
 stat_age *courant = l->premier;
-do{
+while(courant!=NULL){
 if(courant->age == age){
 return n;
 }
 courant = courant->suivant;
 n++;
-}(while courant->age != age && courant->suivant !=NULL);
+}
 reutrn -1;
 }
 
@@ -155,7 +158,7 @@ void age_data(FILE *f, liste *l) {
 
         free(data);
     }
-close_cvs(f);
+close_csv(f);
   }
 
 
