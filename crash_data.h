@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct victime {
     int type;
@@ -16,43 +17,45 @@ typedef struct voiture {
     char* id;
     int purpose;
     victime *victimes;
+    struct voiture *suivant;
 } voiture;
 
 typedef struct noeud {
     char* cle;
-    voiture voiture;
+    voiture *voitures;
     int equilibre;
     struct noeud *gauche;
     struct noeud *droite;
 } noeud;
 
-/* Creation */
+// Creation 
 victime *creevictime();
 voiture *creevoiture();
-noeud *creenoeud(voiture v);
+noeud *creenoeud(char *cle);
 
-/* AVL : fonctions de base */
+//AVL 
 int hauteur(noeud *a);
 int calculEquilibre(noeud *a);
-noeud *rechercheAVL(noeud *a, int id);
+noeud *rechercheAVL(noeud *a, char *cle);
 
-/* Rotations */
+// Rotations 
 noeud *rotationDroite(noeud *a);
 noeud *rotationGauche(noeud *a);
 noeud *doubleRotationDroite(noeud *a);
 noeud *doubleRotationGauche(noeud *a);
 
-/* Equilibrage */
+// Equilibrage 
 noeud *equilibrageAVL(noeud *a);
 
-/* Insertion et suppression */
-noeud *insertionAVL(noeud *a, voiture v);
+// Insertion et suppression 
+noeud *insertionAVL(noeud *a, char *cle, voiture *v);
 noeud *minimumAVL(noeud *a);
 noeud *maximumAVL(noeud *a);
-noeud *suppressionAVL(noeud *a, int id);
+noeud *suppressionAVL(noeud *a, char *cle);
 
-/* Liberation memoire */
+// Liberation 
 void libererVictimes(victime *v);
+void libererVoitures(voiture *v);
 void libererAVL(noeud *a);
 
 #endif
