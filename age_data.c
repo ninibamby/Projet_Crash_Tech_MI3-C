@@ -253,7 +253,6 @@ void afficher_pyramide_age_par_genre(liste *l) {
 
     courant = l->premier;
 
-    // PYRAMIDE PAR GENRE
     printf("\n========== PYRAMIDE DES AGES PAR GENRE ==========\n");
 
     if (total_genre > 0) {
@@ -289,6 +288,54 @@ void afficher_pyramide_age_par_genre(liste *l) {
             courant = courant->suivant;
         }
     }
+
+void afficher_pyaramide_par_type(liste *l){
+  if (l == NULL || l->premier == NULL) {
+        printf("La liste est vide.\n");
+        return;
+    }
+
+  sata_age *courant = l->premier;
+
+    printf("\n========== PYRAMIDE DES AGES PAR TYPE ==========\n");
+
+    if (total_type > 0) {
+
+        while (courant != NULL) {
+
+            printf("\nAge : %d ans\n", courant->age);
+
+            printf("Conducteurs : %.2f%% ",
+                courant->conducteurs * 100.0 / total_type);
+
+            int i;
+            for (i = 0; i < courant->conducteurs * 100 / total_type; i++) {
+                printf("*");
+            }
+
+            printf("\nPassagers : %.2f%% ",
+                courant->passagers * 100.0 / total_type);
+
+            for (i = 0; i < courant->passagers * 100 / total_type; i++) {
+                printf("*");
+            }
+
+            printf("\nPietons : %.2f%% ",
+                courant->pietons * 100.0 / total_type);
+
+            for (i = 0; i < courant->pietons * 100 / total_type; i++) {
+                printf("*");
+            }
+
+            printf("\n");
+
+            courant = courant->suivant;
+        }
+    }
+
+    printf("\n===============================================\n");
+}
+
 
 
 
