@@ -128,32 +128,34 @@ reutrn -1;
 }
 
 
-void *age_data(FILE *f) {
+void age_data(FILE *f, liste *l) {
 
     CsvData *data;
 
     while ((data = recup_data(f)) != NULL) {
 
-    if(data->birth_year>=0 && data->birth_year<=120){
-      if (!=rechercher_age(data->birth_year, l)){
-        ajouter_age(data->birth_year, l);
-      }
-      else{
-        liste courant = l->premier;
-        while(data->birth_year!=courant->age){
-          courant = courant->suivant;
-        }
-        ajouter_stats(courant,data->gender,data->user_type);
+        if (data->birth_year >= 0 && data->birth_year <= 120) {
         
+          
+          if (rechercher_age(data->birth_year, l) == -1) {
+              ajouter_age(data->birth_year, l);
+            }
+
+            stat_age *courant = l->premier;
+
+            while (courant != NULL && courant->age != data->birth_year) {
+                courant = courant->suivant;
+            }
+
+           
+            if (courant != NULL) {
+                ajouter_sats(courant, data->gender, data->user_type);
+            }
+        }
 
         free(data);
     }
-
-    close_csv(f);
-
-    return ;
-}
-
+close_cvs(f);
 
 
 
