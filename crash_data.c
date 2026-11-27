@@ -100,6 +100,9 @@ int eq_p=pivot->equilibre;
     eq_a = eq_a-MIN(eq_p,0)+1;
     eq_p = MAX(eq_p+2,MAX(eq_p+eq_a+2,eq_a+1));
 
+    a->equilibre=eq_a;
+    pivot->equilibre=eq_p;
+
     return pivot;
 }
 
@@ -116,6 +119,9 @@ int eq_p=pivot->equilibre;
 
     eq_a = eq_a-MAX(eq_p,0)-1;
     eq_p = MIN(eq_p-2,MIN(eq_p+eq_a-2,eq_a-1));
+
+    a->equilibre=eq_a;
+    pivot->equilibre=eq_p;
 
     return pivot;
 }
