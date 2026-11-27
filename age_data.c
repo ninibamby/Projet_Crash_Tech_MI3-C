@@ -156,6 +156,7 @@ void age_data(FILE *f, liste *l) {
         free(data);
     }
 close_cvs(f);
+  }
 
 
 
