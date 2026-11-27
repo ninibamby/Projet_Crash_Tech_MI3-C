@@ -13,12 +13,13 @@ typedef struct victime {
 } victime;
 
 typedef struct voiture {
-    int id;
+    char* id;
     int purpose;
     victime *victimes;
 } voiture;
 
 typedef struct noeud {
+    char* cle;
     voiture voiture;
     int equilibre;
     struct noeud *gauche;

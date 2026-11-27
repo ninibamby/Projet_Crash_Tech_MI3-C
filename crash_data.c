@@ -3,7 +3,7 @@
 victime* creevictime(){
     victime* a = malloc(sizeof(victime));
     if(a==NULL){
-        exit(EXIT_FAILURE)
+        exit(EXIT_FAILURE);
     }
     a->age=0;
     a->genre=0;
@@ -19,7 +19,7 @@ voiture *creevoiture() {
     if (v == NULL)
         exit(EXIT_FAILURE);
 
-    v->id = 0;
+    v->id = NULL;
     v->purpose = 0;
     v->victimes = NULL;
 
@@ -31,7 +31,7 @@ noeud *creenoeud(voiture v) {
 
     if (n == NULL)
         exit(EXIT_FAILURE);
-
+    n->cle=NULL;
     n->voiture = v;
     n->equilibre = 0;
     n->gauche = NULL;
@@ -49,23 +49,30 @@ int hauteur(noeud* a){
     return 1+ MAX(hauteur(a->gauche), hauteur(a->droite));
 }
 
-noeud *rechercheAVL(noeud *a, int id) {
-    if (a == NULL)
+noeud *rechercheAVL(noeud *a, char *cle) {
+
+    if (a == NULL) {
         return NULL;
+    }
 
-    if (id == a->voiture.id)
+    int comparaison = strcmp(cle, a->cle);
+
+    if (comparaison == 0) {
         return a;
+    }
 
-    if (id < a->voiture.id)
-        return rechercheAVL(a->gauche, id);
+    if (comparaison < 0) {
+        return rechercheAVL(a->gauche, cle);
+    }
 
-    return rechercheAVL(a->droite, id);
+    return rechercheAVL(a->droite, cle);
+
 }
 
 noeud *rotationDroite(noeud *a) {
-    if (a == NULL || a->gauche == NULL)
+    if (a == NULL || a->gauche == NULL){
         return a;
-
+    }
     noeud *pivot = a->gauche;
 
     a->gauche = pivot->droite;
@@ -119,17 +126,17 @@ noeud *equilibrageAVL(noeud *a) {
     if (a == NULL)
         return NULL;
 
-    a->equilibre = calculEquilibre(a);
-
     if (a->equilibre >= 2) {
-        if (calculEquilibre(a->droite) >= 0)
+        if( a->droite->equilibre >= 0){
             return rotationGauche(a);
-        else
+        }
+        else{
             return doubleRotationGauche(a);
+        }
     }
 
     if (a->equilibre <= -2) {
-        if (calculEquilibre(a->gauche) <= 0)
+        if (a->gauche->equilibre <= 0)
             return rotationDroite(a);
         else
             return doubleRotationDroite(a);

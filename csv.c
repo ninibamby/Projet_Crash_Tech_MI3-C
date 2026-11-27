@@ -46,9 +46,9 @@ CsvData *recup_data(FILE *f) {
 }
  
 void close_csv(FILE *f) {
-    if (fichier != NULL) {
-        fclose(fichier);
-        fichier = NULL;
+    if (f != NULL) {
+        fclose(f);
+        f = NULL;
     }
 }
 
