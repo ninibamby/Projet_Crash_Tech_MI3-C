@@ -166,7 +166,7 @@ close_csv(f);
 
 
 
-void afficher_sats_age(liste *l) {
+void afficher_pyramide_age(liste *l) {                                 //procédure permettant d'afficher la pyramide des ages
 
     if (l == NULL || l->premier == NULL) {
         printf("La liste est vide.\n");
@@ -175,28 +175,55 @@ void afficher_sats_age(liste *l) {
 
     stat_age *courant = l->premier;
 
-    printf("\n========== STATISTIQUES PAR AGE ==========\n");
+    int total = 0;
+
 
     while (courant != NULL) {
 
-        printf("\nAge : %d ans\n", courant->age);
+        total += courant->homme;
+        total += courant->femme;
+        total += courant->genre_inconnu;
 
-        printf("  Genres :\n");
-        printf("    Hommes         : %d\n", courant->homme);
-        printf("    Femmes         : %d\n", courant->femme);
-        printf("    Genre inconnu  : %d\n", courant->genre_inconnu);
+        courant = courant->suivant;                                   //nombres de personnes totales
+    }
 
-        printf("  Types d'usagers :\n");
-        printf("    Conducteurs    : %d\n", courant->conducteurs);
-        printf("    Passagers      : %d\n", courant->passagers);
-        printf("    Pietons        : %d\n", courant->pietons);
+    if (total == 0) {
+        printf("Aucune victime a afficher.\n");
+        return;
+    }
+
+    
+    courant = l->premier;
+
+    printf("\n========== PYRAMIDE DES AGES ==========\n");
+    printf("Total des victimes : %d\n\n", total);
+
+    while (courant != NULL) {
+
+        int nombre = courant->homme
+                   + courant->femme
+                   + courant->genre_inconnu;
+
+        float pourcentage = (nombre * 100.0) / total;                        //calcul du pourncentage de personnes par age
+
+        // Affichage de l'age et du pourcentage
+        printf("%3d ans | %6.2f%% | ", courant->age, pourcentage);
+
+        // Barre graphique
+        int i;
+        int nb_etoiles = (int)(pourcentage * 2);
+
+        for (i = 0; i < nb_etoiles; i++) {
+            printf("*");
+        }
+
+        printf("\n");
 
         courant = courant->suivant;
     }
 
-    printf("\n==========================================\n");
+    printf("\n=======================================\n");
 }
-  
   
 
 
