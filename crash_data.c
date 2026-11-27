@@ -13,7 +13,7 @@ victime* creevictime(){
     return a;
 } 
 
-voiture *creevoiture(void) {
+voiture *creevoiture() {
     voiture *v = malloc(sizeof(voiture));
 
     if (v == NULL)
@@ -183,7 +183,7 @@ void *crash_data(FILE *f) {
 
     close_csv(f);
 
-    return NULL;
+    return ;
 }
 
 
