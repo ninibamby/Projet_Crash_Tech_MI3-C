@@ -127,7 +127,36 @@ n++;
 reutrn -1;
 }
 
-void afficher_sats_age(
+void afficher_sats_age(liste *l) {
+
+    if (l == NULL || l->premier == NULL) {
+        printf("La liste est vide.\n");
+        return;
+    }
+
+    stat_age *courant = l->premier;
+
+    printf("\n========== STATISTIQUES PAR AGE ==========\n");
+
+    while (courant != NULL) {
+
+        printf("\nAge : %d ans\n", courant->age);
+
+        printf("  Genres :\n");
+        printf("    Hommes         : %d\n", courant->homme);
+        printf("    Femmes         : %d\n", courant->femme);
+        printf("    Genre inconnu  : %d\n", courant->genre_inconnu);
+
+        printf("  Types d'usagers :\n");
+        printf("    Conducteurs    : %d\n", courant->conducteurs);
+        printf("    Passagers      : %d\n", courant->passagers);
+        printf("    Pietons        : %d\n", courant->pietons);
+
+        courant = courant->suivant;
+    }
+
+    printf("\n==========================================\n");
+}
   
   
 
